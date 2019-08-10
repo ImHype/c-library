@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "hash_map.h": "c",
+        "stdlib.h": "c",
+        "skip_list.h": "c",
+        "heap.h": "c",
+        "string.h": "c",
+        "toolkit.h": "c",
+        "assert.h": "c",
+        "printf.h": "c"
+    }
+}
