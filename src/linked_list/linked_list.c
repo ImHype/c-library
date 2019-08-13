@@ -1,5 +1,5 @@
 #include "stdlib.h"
-#include "linked-list.h"
+#include "linked_list.h"
 
 int create_linked_list(linked_list_t * linked_list) {
     linked_list->length = 0;
@@ -159,6 +159,33 @@ int linked_list_remove_at(linked_list_t * linked_list, int index) {
 };
 
 
+void * linked_list_remove_at_returned(linked_list_t * linked_list, int index) {
+    int i = 0;
+    node_t ** n;
+    node_t * p;
+
+    n = &(linked_list->head);
+
+    while (i < index)
+    {
+        if (*n == NULL) {
+            return NULL;
+        }
+
+        n = &(*n)->next;
+        i++;
+    }
+
+    p = *n;
+    (*n) = p->next;
+
+    linked_list->length--;
+
+    return p->element;
+};
+
+
+
 int linked_list_foreach(linked_list_t * linked_list, int (*callback)(int index, void *)) {
     int i = 0;
     node_t ** n;
@@ -173,3 +200,12 @@ int linked_list_foreach(linked_list_t * linked_list, int (*callback)(int index, 
 
     return 0;
 };
+
+void * linked_list_pop(linked_list_t * linked_list) {
+    return linked_list_remove_at_returned(linked_list, linked_list->length - 1);
+}
+
+void * linked_list_shift(linked_list_t * linked_list) {
+    return linked_list_remove_at_returned(linked_list, 0);
+}
+
