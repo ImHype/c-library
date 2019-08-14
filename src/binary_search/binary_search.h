@@ -1,0 +1,1 @@
+int binary_search(int arr[], int start, int end,  int data);
