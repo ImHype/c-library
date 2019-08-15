@@ -1,3 +1,7 @@
+#ifndef TREE_H
+
+#define TREE_H
+
 typedef struct node_t
 {
     struct node_t * left;
@@ -23,3 +27,5 @@ node_t * tree_search(tree_t * tree, int value);
 int tree_visit(tree_t * tree, int (*callback)(node_t * node));
 
 int tree_add_node(tree_t * tree, int value);
+
+#endif
