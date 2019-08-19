@@ -3,12 +3,12 @@
 #include <string.h>
 
 
-node_t * create_node(int value, int max_level) {
-    node_t * node = malloc(sizeof(node_t));
+skip_list_node_t * create_node(int value, int max_level) {
+    skip_list_node_t * node = malloc(sizeof(skip_list_node_t));
 
     node->value = value;
     
-    int space = max_level * sizeof(node_t *);
+    int space = max_level * sizeof(skip_list_node_t *);
     node->next = malloc(space);
     memset(node->next, 0, space);
 
@@ -28,22 +28,22 @@ int item_level(skip_list_t * skip_list) {
 }
 
 int skip_list_insert(skip_list_t * skip_list, int value) {
-    node_t * head = skip_list->head;
-    node_t * nnode = create_node(value, skip_list->max_level);
+    skip_list_node_t * head = skip_list->head;
+    skip_list_node_t * nnode = create_node(value, skip_list->max_level);
 
     if (head == NULL) {
         skip_list->head = nnode;
         return 0;
     }
     
-    int space = sizeof(node_t *) * skip_list->max_level;
-    node_t ** predecessors = malloc(space);
+    int space = sizeof(skip_list_node_t *) * skip_list->max_level;
+    skip_list_node_t ** predecessors = malloc(space);
     memset(predecessors, 0, space);
 
     for (int i = skip_list->level; i >= 0; i--) {
         while (head != NULL)
         {
-            node_t * item = head->next[i];
+            skip_list_node_t * item = head->next[i];
 
             if (item == NULL) {
                 break;
@@ -67,7 +67,7 @@ int skip_list_insert(skip_list_t * skip_list, int value) {
 
     for (int i = level; i >= 0; i--)
     {
-        node_t * node = (predecessors[i] == NULL) ? skip_list->head: predecessors[i];
+        skip_list_node_t * node = (predecessors[i] == NULL) ? skip_list->head: predecessors[i];
 
         nnode->next[i] = node->next[i];
         node->next[i] = nnode;
@@ -78,8 +78,8 @@ int skip_list_insert(skip_list_t * skip_list, int value) {
     return 0;
 };
 
-node_t * skip_list_find(skip_list_t * skip_list, int value) {
-    node_t * head = skip_list->head;
+skip_list_node_t * skip_list_find(skip_list_t * skip_list, int value) {
+    skip_list_node_t * head = skip_list->head;
 
     if (head == NULL) {
         return NULL;
@@ -88,7 +88,7 @@ node_t * skip_list_find(skip_list_t * skip_list, int value) {
     for (int i = skip_list->level; i >= 0; i--) {
         while (head != NULL)
         {
-            node_t * item = head->next[i];
+            skip_list_node_t * item = head->next[i];
 
             if (item == NULL) {
                 break;
@@ -110,15 +110,15 @@ node_t * skip_list_find(skip_list_t * skip_list, int value) {
 };
 
 int skip_list_remove(skip_list_t * skip_list, int value) {
-    node_t * head = skip_list->head;
-    node_t ** prev = &skip_list->head;
+    skip_list_node_t * head = skip_list->head;
+    skip_list_node_t ** prev = &skip_list->head;
 
     if (head == NULL) {
         return -2;
     }
     
-    int space = sizeof(node_t *) * skip_list->max_level;
-    node_t ** predecessors = malloc(space);
+    int space = sizeof(skip_list_node_t *) * skip_list->max_level;
+    skip_list_node_t ** predecessors = malloc(space);
     memset(predecessors, 0, space);
 
     int level = -1;
@@ -127,7 +127,7 @@ int skip_list_remove(skip_list_t * skip_list, int value) {
 
         while (head != NULL)
         {
-            node_t * item = head->next[i];
+            skip_list_node_t * item = head->next[i];
 
             if (item == NULL) {
                 break;

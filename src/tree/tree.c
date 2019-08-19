@@ -1,8 +1,8 @@
 #include "tree.h"
 #include "stdlib.h"
 
-node_t * node_init(int value) {
-    node_t * node = malloc(sizeof(node_t));
+tree_node_t * node_init(int value) {
+    tree_node_t * node = malloc(sizeof(tree_node_t));
 
     node->left = NULL;
     node->right = NULL;
@@ -11,8 +11,8 @@ node_t * node_init(int value) {
     return node;
 };
 
-node_t * node_search(node_t ** tree, int value) {
-    node_t * p = *tree;
+tree_node_t * node_search(tree_node_t ** tree, int value) {
+    tree_node_t * p = *tree;
 
     if (p == NULL) {
         return NULL;
@@ -29,8 +29,8 @@ node_t * node_search(node_t ** tree, int value) {
     return node_search(&p->right, value);
 };
 
-int node_visit(node_t ** tree, int (*callback)(node_t * node)) {
-    node_t * p = *tree;
+int node_visit(tree_node_t ** tree, int (*callback)(tree_node_t * node)) {
+    tree_node_t * p = *tree;
 
     if (p == NULL) {
         return 0;
@@ -46,8 +46,8 @@ int node_visit(node_t ** tree, int (*callback)(node_t * node)) {
 };
 
 
-int node_add_node(node_t ** tree, node_t * node) {
-    node_t * p = *tree;
+int node_add_node(tree_node_t ** tree, tree_node_t * node) {
+    tree_node_t * p = *tree;
     if (p == NULL) {
         *tree = node;
         return 0;
@@ -65,11 +65,11 @@ int tree_init(tree_t * tree) {
     return 0;
 }
 
-node_t * tree_search(tree_t * tree, int value) {
+tree_node_t * tree_search(tree_t * tree, int value) {
     return node_search(&tree->root, value);
 };
 
-int tree_visit(tree_t * tree, int (*callback)(node_t * node)) {
+int tree_visit(tree_t * tree, int (*callback)(tree_node_t * node)) {
     return node_visit(&tree->root, callback);
 };
 

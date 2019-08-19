@@ -3,7 +3,7 @@
 #include "assert.h"
 
 
-int print_node(node_t * node) {
+int print_node(tree_node_t * node) {
     printf("%d\n", node->value);
     return 0;
 }

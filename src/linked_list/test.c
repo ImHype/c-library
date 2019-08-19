@@ -25,7 +25,7 @@ int test_linked_list() {
 
     linked_list_add(linked_list, (void *)(&arr[0]));
 
-    node_t * tmp = linked_list_head(linked_list);
+    linked_list_node_t * tmp = linked_list_head(linked_list);
 
     assert(tmp != NULL);
 

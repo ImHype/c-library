@@ -1,7 +1,7 @@
 #include "../tree/tree.h"
 #include "stdlib.h"
 
-int max_tree_depth(node_t * tree) {
+int max_tree_depth(tree_node_t * tree) {
     if (tree == NULL) {
         return 0;
     }
@@ -13,7 +13,7 @@ int max_tree_depth(node_t * tree) {
 };
 
 
-int min_tree_depth(node_t * tree) {
+int min_tree_depth(tree_node_t * tree) {
     if(tree == NULL)
         return 0;
     if(tree->left == NULL || tree->right == NULL)

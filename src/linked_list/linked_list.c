@@ -12,11 +12,11 @@ int linked_list_size(linked_list_t * linked_list) {
 }
 
 
-node_t * linked_list_head(linked_list_t * linked_list) {
+linked_list_node_t * linked_list_head(linked_list_t * linked_list) {
     return linked_list->head;
 }
-node_t * create_node(void * element) {
-    node_t * node = malloc(sizeof(node_t));
+linked_list_node_t * create_node(void * element) {
+    linked_list_node_t * node = malloc(sizeof(linked_list_node_t));
     node->element = element;
     node->next = NULL;
 
@@ -24,9 +24,9 @@ node_t * create_node(void * element) {
 }
 
 int linked_list_add(linked_list_t * linked_list, void * element) {
-    node_t * node = create_node(element);
+    linked_list_node_t * node = create_node(element);
 
-    node_t ** n;
+    linked_list_node_t ** n;
     n = &(linked_list->head);
 
     while (*n != NULL)
@@ -43,8 +43,8 @@ int linked_list_add(linked_list_t * linked_list, void * element) {
 
 int linked_list_remove(linked_list_t * linked_list, void * element) {
     int i = 0;
-    node_t ** n;
-    node_t * p;
+    linked_list_node_t ** n;
+    linked_list_node_t * p;
     n = &(linked_list->head);
 
     while (*n != NULL)
@@ -72,7 +72,7 @@ int linked_list_is_empty(linked_list_t * linked_list) {
 
 int linked_list_index_of(linked_list_t * linked_list, void * element) {
     int i = 0;
-    node_t ** n;
+    linked_list_node_t ** n;
     n = &(linked_list->head);
 
     while (*n != NULL)
@@ -89,9 +89,9 @@ int linked_list_index_of(linked_list_t * linked_list, void * element) {
 };
 
 
-node_t * linked_list_element_at(linked_list_t * linked_list, int index) {
+linked_list_node_t * linked_list_element_at(linked_list_t * linked_list, int index) {
     int i = 0;
-    node_t ** n;
+    linked_list_node_t ** n;
 
     n = &(linked_list->head);
 
@@ -111,7 +111,7 @@ node_t * linked_list_element_at(linked_list_t * linked_list, int index) {
 
 int linked_list_add_at(linked_list_t * linked_list, int index, void * element) {
     int i = 0;
-    node_t ** n;
+    linked_list_node_t ** n;
     n = &(linked_list->head);
 
     while (i < index)
@@ -124,7 +124,7 @@ int linked_list_add_at(linked_list_t * linked_list, int index, void * element) {
         i++;
     }
 
-    node_t * node = create_node(element);
+    linked_list_node_t * node = create_node(element);
     node->next = (*n)->next;
     (*n) = node;
 
@@ -134,8 +134,8 @@ int linked_list_add_at(linked_list_t * linked_list, int index, void * element) {
 
 int linked_list_remove_at(linked_list_t * linked_list, int index) {
     int i = 0;
-    node_t ** n;
-    node_t * p;
+    linked_list_node_t ** n;
+    linked_list_node_t * p;
 
     n = &(linked_list->head);
 
@@ -161,8 +161,8 @@ int linked_list_remove_at(linked_list_t * linked_list, int index) {
 
 void * linked_list_remove_at_returned(linked_list_t * linked_list, int index) {
     int i = 0;
-    node_t ** n;
-    node_t * p;
+    linked_list_node_t ** n;
+    linked_list_node_t * p;
 
     n = &(linked_list->head);
 
@@ -188,7 +188,7 @@ void * linked_list_remove_at_returned(linked_list_t * linked_list, int index) {
 
 int linked_list_foreach(linked_list_t * linked_list, int (*callback)(int index, void *)) {
     int i = 0;
-    node_t ** n;
+    linked_list_node_t ** n;
     n = &(linked_list->head);
 
     while (*n != NULL)

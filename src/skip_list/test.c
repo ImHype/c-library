@@ -13,7 +13,7 @@ int main(int argc, char const *argv[])
     p->insert(p, 1);
     p->insert(p, 2);
 
-    node_t * tmp = p->find(p, 1);
+    skip_list_node_t * tmp = p->find(p, 1);
     assert(tmp && tmp->value == 1);
 
     p->insert(p, 3);
