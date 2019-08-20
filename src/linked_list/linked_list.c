@@ -125,8 +125,12 @@ int linked_list_add_at(linked_list_t * linked_list, int index, void * element) {
     }
 
     linked_list_node_t * node = create_node(element);
-    node->next = (*n)->next;
+
+    node->next = *n;
+
     (*n) = node;
+
+    linked_list->length ++;
 
     return 0;
 };
@@ -209,3 +213,6 @@ void * linked_list_shift(linked_list_t * linked_list) {
     return linked_list_remove_at_returned(linked_list, 0);
 }
 
+int linked_list_unshift(linked_list_t * linked_list, void * element) {
+    return linked_list_add_at(linked_list, 0, element);
+}

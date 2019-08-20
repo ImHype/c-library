@@ -18,19 +18,28 @@ int main(int argc, char const *argv[])
     p->root->right->left = node_init(6);
     p->root->right->right = node_init(7);
 
-    printf("postorder_traverse\n");
-    postorder_traverse(p->root);
 
 
     printf("preorder_traverse\n");
     preorder_traverse(p->root);
 
+    printf("preorder_traverse_non_recursive\n");
+    preorder_traverse_non_recursive(p->root);
+
+
+    printf("postorder_traverse\n");
+    postorder_traverse(p->root);
+
 
     printf("inorder_traverse\n");
     inorder_traverse(p->root);
 
+    printf("inorder_traverse_non_recursive\n");
+    inorder_traverse_non_recursive(p->root);
+
     printf("level_traverse\n");
     level_traverse(p->root);
+    
     
     return 0;
 }

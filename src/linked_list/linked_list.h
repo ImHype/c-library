@@ -39,6 +39,8 @@ void * linked_list_pop(linked_list_t * linked_list);
 
 void * linked_list_shift(linked_list_t * linked_list);
 
+int linked_list_unshift(linked_list_t * linked_list, void * element);
+
 #define LIST_FOREACH_BEGIN(linked_list, q)\
     int i = 0;\
     linked_list_node_t ** n;\
