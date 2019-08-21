@@ -9,6 +9,7 @@
                 "${fileDirname}/*.c",
                 "${workspaceFolder}/src/tree/tree.c",
                 "${workspaceFolder}/src/linked_list/linked_list.c",
+                "${workspaceFolder}/src/tree_traverse/tree_traverse.c",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
