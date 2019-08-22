@@ -47,3 +47,28 @@ int preorder_inorder_tree_recovery(int preorder[], int inorder[], int size, tree
 
     return 0;
 }
+
+int postorder_inorder_tree_recovery(int postorder[], int inorder[], int size, tree_node_t ** node) {
+    if (size == 0) {
+        return 0;
+    }
+
+    int root = postorder[size - 1];
+
+    int root_inorder_index = array_find(inorder, size, root);
+
+    *node = node_init(root);
+
+    int left_node_size = root_inorder_index;
+    int right_node_size = size - root_inorder_index - 1;
+
+    int * postorder_left = array_cpy(postorder, 0, right_node_size);
+    int * inorder_left =  array_cpy(inorder, 0, left_node_size);
+    int * postorder_right = array_cpy(postorder, size - 1 - left_node_size, left_node_size);
+    int * inorder_right = array_cpy(inorder, root_inorder_index + 1, right_node_size);
+
+    postorder_inorder_tree_recovery(postorder_left, inorder_left, left_node_size, &((*node)->left));
+    postorder_inorder_tree_recovery(postorder_right, inorder_right, right_node_size, &((*node)->right));
+
+    return 0;
+}

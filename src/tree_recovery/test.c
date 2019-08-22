@@ -8,7 +8,7 @@ int main(int argc, char const *argv[])
 {
     int preorder[] = {1,2,4,5,3,6,7};
     int inorder[] = {4,2,5,1,6,3,7};
-
+    int postorder[] = {4,5,2,6,7,3,1};
     tree_t tree;
     tree_t * treep = &tree;
 
@@ -18,6 +18,14 @@ int main(int argc, char const *argv[])
 
     printf("preorder_traverse\n");
     preorder_traverse(treep->root);
+
+    printf("inorder_traverse\n");
+    inorder_traverse(treep->root);
+
+    postorder_inorder_tree_recovery(postorder, inorder, ARRAY_SIZE(inorder), &treep->root);
+
+    printf("postorder_traverse\n");
+    postorder_traverse(treep->root);
 
     printf("inorder_traverse\n");
     inorder_traverse(treep->root);
