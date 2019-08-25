@@ -16,6 +16,19 @@
             "externalConsole": false,
             "MIMode": "lldb",
             "preLaunchTask": "clang build active file"
-        }
+        },
+        {
+            "name": "tree",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "tree"
+        },
     ]
 }

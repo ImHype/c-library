@@ -11,24 +11,6 @@ tree_node_t * node_init(int value) {
     return node;
 };
 
-tree_node_t * node_search(tree_node_t ** tree, int value) {
-    tree_node_t * p = *tree;
-
-    if (p == NULL) {
-        return NULL;
-    }
-
-    if (p->value == value) {
-        return p;
-    }
-
-    if (value < p->value) {
-        return node_search(&p->left, value);
-    }
-
-    return node_search(&p->right, value);
-};
-
 int node_visit(tree_node_t ** tree, int (*callback)(tree_node_t * node)) {
     tree_node_t * p = *tree;
 
@@ -45,34 +27,11 @@ int node_visit(tree_node_t ** tree, int (*callback)(tree_node_t * node)) {
     return 0;
 };
 
-
-int node_add_node(tree_node_t ** tree, tree_node_t * node) {
-    tree_node_t * p = *tree;
-    if (p == NULL) {
-        *tree = node;
-        return 0;
-    }
-
-    if (node->value < p->value) {
-        return node_add_node(&p->left, node);
-    }
-
-    return node_add_node(&p->right, node);
-};
-
 int tree_init(tree_t * tree) {
     tree->root = NULL;
     return 0;
 }
 
-tree_node_t * tree_search(tree_t * tree, int value) {
-    return node_search(&tree->root, value);
-};
-
 int tree_visit(tree_t * tree, int (*callback)(tree_node_t * node)) {
     return node_visit(&tree->root, callback);
-};
-
-int tree_add_node(tree_t * tree, int value) {
-    return node_add_node(&tree->root, node_init(value));;
 };

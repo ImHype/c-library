@@ -16,6 +16,20 @@
             "options": {
                 "cwd": "/usr/bin"
             }
+        },
+        {
+            "type": "shell",
+            "label": "tree",
+            "command": "/usr/bin/clang",
+            "args": [
+                "-g",
+                "${fileDirname}/*.c",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            }
         }
     ],
     "version": "2.0.0"
