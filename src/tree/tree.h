@@ -8,6 +8,7 @@ typedef struct tree_node_t
     struct tree_node_t * right;
     int value;
     void * data;
+    int height;
 } tree_node_t;
 
 

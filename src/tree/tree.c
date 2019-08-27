@@ -7,6 +7,7 @@ tree_node_t * node_init(int value) {
     node->left = NULL;
     node->right = NULL;
     node->value = value;
+    node->height = 0;
 
     return node;
 };
