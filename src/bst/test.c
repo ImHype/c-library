@@ -85,11 +85,11 @@ int main(int argc, char const *argv[])
         bst_remove(bst1, value);
         assert(bst_search(bst1, value) == NULL);
     }
-
+    assert(bst1->root == NULL);
+    print(bst1);
 
     bst_t * bst2 = create_bst_from_array(arr2, ARRAY_SIZE(arr2));
     assert(is_bst_type(bst2));
-    print(bst2);
 
     for (int i = 0; i < ARRAY_SIZE(arr); i++)
     {
@@ -97,6 +97,8 @@ int main(int argc, char const *argv[])
         bst_remove(bst2, value);
         assert(bst_search(bst2, value) == NULL);
     }
+    assert(bst2->root == NULL);
+    print(bst2);
     
     return 0;
 }
