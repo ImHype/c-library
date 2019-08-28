@@ -10,7 +10,7 @@ int main() {
     char str_part[] = "hell";
 
     trie_init(t);
-    trie_insert(t, str, 5);
+    trie_insert(t, str, strlen(str));
 
     assert(trie_search(t, str, strlen(str)) == 1);
     assert(trie_search(t, str_part, strlen(str_part)) == 0);
