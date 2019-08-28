@@ -8,6 +8,10 @@
         "string.h": "c",
         "toolkit.h": "c",
         "assert.h": "c",
-        "printf.h": "c"
+        "printf.h": "c",
+        "__locale": "c",
+        "__string": "c",
+        "string": "c",
+        "string_view": "c"
     }
 }

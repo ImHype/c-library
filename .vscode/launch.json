@@ -29,6 +29,6 @@
             "externalConsole": false,
             "MIMode": "lldb",
             "preLaunchTask": "tree"
-        },
+        }
     ]
 }
